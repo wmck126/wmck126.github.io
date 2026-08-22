@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ward McKinley — software engineering resume" />
+  <title>Ward McKinley — Resume</title>
+  <style>
+    :root {
+      --ink: #14171a;
+      --muted: #5b636b;
+      --line: #dfe3e6;
+      --accent: #245f87;
+      --paper: #fff;
+      --bg: #eef1f3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.42;
+    }
+    a { color: inherit; text-decoration: none; }
+    .toolbar {
+      max-width: 980px; margin: 22px auto 12px; display: flex; justify-content: space-between; align-items: center;
+      padding: 0 16px; color: var(--muted); font-size: 14px;
+    }
+    .toolbar div { display: flex; gap: 8px; }
+    .toolbar a, .toolbar button {
+      border: 1px solid #cbd1d6; background: #fff; border-radius: 9px; padding: 9px 12px;
+      font: inherit; cursor: pointer;
+    }
+    .page {
+      width: min(calc(100% - 28px), 8.5in);
+      min-height: 11in;
+      margin: 0 auto 28px;
+      background: var(--paper);
+      box-shadow: 0 18px 50px rgba(30,40,50,.13);
+      padding: .52in .58in;
+    }
+    header { display: grid; grid-template-columns: 1fr auto; gap: 24px; padding-bottom: 18px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0; font-size: 30px; line-height: 1; letter-spacing: -.04em; }
+    .headline { margin: 8px 0 0; font-weight: 700; color: var(--accent); }
+    .contact { text-align: right; font-size: 12.5px; color: var(--muted); }
+    .contact a { display: block; }
+    .summary { margin: 16px 0 0; font-size: 13.2px; color: #30363b; }
+    section { margin-top: 20px; }
+    .section-title {
+      margin: 0 0 9px; font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--accent);
+      border-bottom: 1px solid var(--line); padding-bottom: 5px;
+    }
+    .role { display: grid; grid-template-columns: 1fr auto; gap: 4px 18px; margin-top: 13px; }
+    .role:first-of-type { margin-top: 0; }
+    .role h3 { margin: 0; font-size: 14px; }
+    .role .date { color: var(--muted); font-size: 11.5px; white-space: nowrap; }
+    .role .company { margin: 1px 0 5px; font-size: 11.8px; color: var(--muted); }
+    .role ul { grid-column: 1 / -1; margin: 3px 0 0; padding-left: 17px; font-size: 11.55px; }
+    .role li { margin-bottom: 3px; }
+    .project { margin-top: 12px; }
+    .project:first-of-type { margin-top: 0; }
+    .project-head { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; }
+    .project h3 { margin: 0; font-size: 13.5px; }
+    .stack { color: var(--muted); font-size: 10.8px; text-align: right; }
+    .project p { margin: 4px 0 0; font-size: 11.55px; }
+    .skills-grid { display: grid; grid-template-columns: 110px 1fr; gap: 5px 12px; font-size: 11.55px; }
+    .skills-grid strong { color: #343a40; }
+    .edu { display: flex; justify-content: space-between; gap: 24px; margin-top: 8px; font-size: 11.6px; }
+    .edu strong { display: block; }
+    .edu span { color: var(--muted); }
+    .note { color: var(--muted); font-size: 10.5px; margin-top: 6px; }
+    @media (max-width: 650px) {
+      .page { padding: 30px 24px; }
+      header { grid-template-columns: 1fr; }
+      .contact { text-align: left; }
+      .project-head, .edu { flex-direction: column; gap: 2px; }
+      .stack { text-align: left; }
+    }
+    @media print {
+      @page { size: Letter; margin: 0; }
+      body { background: #fff; }
+      .toolbar { display: none; }
+      .page {
+        width: 8.5in; height: 11in; min-height: 0; margin: 0; box-shadow: none;
+        padding: .42in .5in;
+      }
+      section { margin-top: 15px; }
+      .role { margin-top: 10px; }
+      .role ul { font-size: 10.8px; }
+      .project p, .skills-grid, .edu { font-size: 10.8px; }
+      .summary { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a href="index.html">← Portfolio</a>
+    <div>
+      <a href="mailto:wmck126@gmail.com">Email</a>
+      <button type="button" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </div>
+
+  <main class="page">
+    <header>
+      <div>
+        <h1>Ward McKinley</h1>
+        <p class="headline">Software Engineer · AWS Engineer</p>
+      </div>
+      <div class="contact">
+        <span>Manassas, VA</span>
+        <a href="mailto:wmck126@gmail.com">wmck126@gmail.com</a>
+        <a href="https://www.linkedin.com/in/ward-mckinley/">linkedin.com/in/ward-mckinley</a>
+      </div>
+    </header>
+
+    <p class="summary">
+      AWS engineer with hands-on experience designing full-stack internal tooling, serverless workflows, automation, Linux systems,
+      APIs, and global-scale software UAT. Authored the architecture for a configurable backlog prioritization application using
+      JavaScript/TypeScript, AWS Lambda, and DynamoDB. Seeking a general software engineering role where production context and
+      application development intersect.
+    </p>
+
+    <section>
+      <h2 class="section-title">Experience</h2>
+
+      <div class="role">
+        <div>
+          <h3>Support Engineer → Systems Engineer (effective Sep 2026)</h3>
+          <p class="company">Amazon Web Services · Ashburn, VA</p>
+        </div>
+        <div class="date">Feb 2025 — Present</div>
+        <ul>
+          <li>Architected and developed an internal full-stack application that ranks an operational backlog using a configurable 0–100 score across five weighted dimensions, processing approximately 500 tickets per execution.</li>
+          <li>Designed reusable priority profiles and persisted full per-execution scoring breakdowns to Amazon DynamoDB, making ranking decisions traceable and auditable.</li>
+          <li>Built the application with JavaScript/TypeScript, AWS Lambda, internal authentication, and Vitest unit testing; created its processing pipeline from scratch using internal AWS tooling.</li>
+          <li>Perform UAT for internal software used by data-center teams globally, documenting defects and workflow gaps and presenting actionable findings directly to development teams.</li>
+          <li>Serve as an intermediary between software developers and data-center technicians, translating production-user needs into technical feedback and software improvements.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div>
+          <h3>Data Center Operations Team Lead</h3>
+          <p class="company">Amazon Web Services · Ashburn, VA</p>
+        </div>
+        <div class="date">Jul 2022 — Feb 2025</div>
+        <ul>
+          <li>Led a team of 12 technicians, aligning daily priorities with service-level requirements and serving as an escalation point during large-scale events.</li>
+          <li>Used Python and Bash scripting to automate repetitive operational tasks and improve technician workflows.</li>
+          <li>Led onboarding and hands-on troubleshooting across enterprise server hardware, Linux-based tools, and mission-critical infrastructure.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div>
+          <h3>Data Center Operations Technician</h3>
+          <p class="company">Amazon Web Services · Ashburn, VA</p>
+        </div>
+        <div class="date">Mar 2020 — Jul 2022</div>
+        <ul>
+          <li>Supported mission-critical infrastructure in a 24/7 environment using Linux/PowerShell CLI workflows, hardware diagnostics, SSH, and Bash automation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Selected Projects</h2>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>MediaBrain — Media Discovery & Recommendation Platform</h3>
+          <span class="stack">React · TypeScript · REST APIs · Docker</span>
+        </div>
+        <p>Architected a personal full-stack system that combines media-library data, metadata, availability, household preferences, and recommendation signals to rank what to watch next. Designed the architecture, data model, features, background workflows, and recommendation behavior while using AI-assisted implementation tooling.</p>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Smithsonian IMAX Watcher</h3>
+          <span class="stack">Python · Docker · Valkey · Discord</span>
+        </div>
+        <p>Built a self-hosted monitoring service that detects new Smithsonian IMAX announcements and delivers Discord notifications, with persistent state and containerized deployment designed around reliability without a paid alerting service.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <strong>Languages</strong><span>Java, Python, JavaScript, TypeScript, C, SQL, Bash</span>
+        <strong>Application</strong><span>React, REST APIs, unit testing, Vitest, Git</span>
+        <strong>Cloud / Systems</strong><span>AWS Lambda, DynamoDB, Linux, Docker, automation</span>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Education</h2>
+      <div class="edu">
+        <div><strong>George Mason University</strong><span>B.S. Computer Science · In progress · Junior standing</span></div>
+        <div><strong>Northern Virginia Community College</strong><span>A.S. Computer Science</span></div>
+        <div><strong>Flatiron School</strong><span>Full Stack Web Development · 2022</span></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
