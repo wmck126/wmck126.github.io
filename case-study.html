@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Case study: a full-stack task backlog prioritization platform designed and built by Ward McKinley." />
+  <meta name="description" content="Case study: a serverless full-stack task backlog prioritization platform built with AWS Lambda and DynamoDB." />
   <meta name="theme-color" content="#0b0d10" />
   <title>Task Backlog Prioritization Platform — Ward McKinley</title>
   <link rel="stylesheet" href="styles.css" />
@@ -34,7 +34,7 @@
       <p class="eyebrow">Professional case study · Internal platform</p>
       <h1>Task Backlog Prioritization Platform</h1>
       <p class="hero-lede">A full-stack platform that replaced manual spreadsheet-based backlog triage with a transparent, configurable prioritization engine.</p>
-      <div class="case-meta stack" aria-label="Project technologies"><span>TypeScript</span><span>React</span><span>Node.js</span><span>Express</span><span>NoSQL</span><span>Cloud</span><span>Vitest</span></div>
+      <div class="case-meta stack" aria-label="Project technologies"><span>JavaScript / TypeScript</span><span>React</span><span>AWS Lambda</span><span>DynamoDB</span><span>Internal authentication</span><span>Vitest</span></div>
     </section>
 
     <div class="case-layout shell">
@@ -53,7 +53,7 @@
 
         <section class="case-section" id="role">
           <p class="eyebrow">03 · My role</p><h2>Sole engineer, end to end.</h2>
-          <p>I designed and built the platform: the React interface, Node and Express API, data model, prioritization engine, automated test suite, security hardening, and cloud hosting and automation architecture.</p>
+          <p>I designed and built the platform: the React interface, JavaScript-based AWS Lambda functions, DynamoDB data model, prioritization engine, automated test suite, security hardening, internal authentication integration, and cloud automation architecture.</p>
         </section>
 
         <section class="case-section" id="solution">
@@ -63,24 +63,26 @@
         </section>
 
         <section class="case-section" id="architecture">
-          <p class="eyebrow">05 · Architecture</p><h2>Authenticated cloud application with secure upstream access.</h2>
-          <pre class="architecture" aria-label="Generalized platform architecture">User browser
-    │ HTTPS / SSO
+          <p class="eyebrow">05 · Architecture</p><h2>Authenticated, serverless application built on AWS.</h2>
+          <pre class="architecture" aria-label="Generalized platform architecture">Authenticated user
+    │
     ▼
-Authenticating load balancer
-    │ signed identity token
+React web application
+    │ HTTPS
     ▼
-Application server ─── React web UI
-    ├─────────────── REST API
+AWS Lambda functions
     ├─────────────── Prioritization engine
-    ├─────────────── NoSQL data store
-    └─────────────── Managed LLM service
-          ▲
-          │ scheduled commands / queued events
-Scheduler + ingest function
-          │
-          ▼
-Generalized upstream systems</pre>
+    ├─────────────── Workflow orchestration
+    ├─────────────── Scheduled processing
+    └─────────────── Integration layer
+                    │
+                    ▼
+                 DynamoDB
+                  ├── Configuration presets
+                  ├── Task data
+                  └── Scoring results and audit history
+
+Generalized internal systems ──▶ Ingestion pipeline ──▶ Lambda / DynamoDB</pre>
         </section>
 
         <section class="case-section" id="decisions">
@@ -88,7 +90,7 @@ Generalized upstream systems</pre>
           <h3>Configurable scoring presets</h3><p>Weights are configuration rather than hard-coded logic. Teams can retune priorities without a deployment, and every change remains traceable.</p>
           <h3>Full score breakdowns</h3><p>Persisting each dimension’s contribution turns an opaque ranking into a reproducible answer to “why did this rank here?”</p>
           <h3>Deterministic, hardened scoring</h3><p>Scores are clamped to 0–100, ties resolve deterministically, invalid values are handled safely, and configurable matching protects against regular-expression injection and denial-of-service risks.</p>
-          <h3>Long-running authenticated application host</h3><p>A persistent server was selected because upstream integrations require network access and credentials unsuitable for short-lived functions. TLS and SSO are enforced at the edge, and identity comes from a verified signed token rather than a trusted request header.</p>
+          <h3>Serverless backend</h3><p>AWS Lambda separates application and scoring workflows into independently managed functions. DynamoDB provides durable storage for configuration, task data, scoring results, and audit history.</p>
           <h3>Resilient automation</h3><p>Managed scheduling provides retries and an audit trail. Paginated data access and crash-resilient batches maintain correctness as the backlog grows and prevent record loss during partial failures.</p>
           <h3>Accessibility as a build requirement</h3><p>An automated lint gate prevents keyboard and screen-reader support from silently regressing.</p>
         </section>
